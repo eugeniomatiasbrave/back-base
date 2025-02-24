@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import config from '../config/config.env.js';
-import UserDto from '../dto/UserDTO.js';
+import userDto from '../dto/userDto.js';
 
 const SECRET = config.auth.jwt.SECRET;
 
@@ -9,9 +9,9 @@ const register = (req, res) => {
 };
 
 const login = async (req, res) => {
-        const sessionUser = UserDto.forToken(req.user);
-
-        const token = jwt.sign(sessionUser,SECRET,{expiresIn:'1h'});
+        const user = req.user;
+        const TokenResponseDto = userDto.forToken(user); // Use userDto.js to format the user data for the token
+        const token = jwt.sign(TokenResponseDto,SECRET,{expiresIn:'1h'});
         console.log(token);
         res.cookie('token',token).sendSuccess("Logged in");
 };

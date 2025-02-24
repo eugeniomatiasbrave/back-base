@@ -1,17 +1,17 @@
 export default class UserDto {
     constructor(user) {
-        this.id = user._id;
-        this.firstName = user.firstName;
+        this.id = user._id || user.id;
+        this.firstName = user.firstName; 
         this.lastName = user.lastName;
         this.email = user.email;
         this.role = user.role;
     }
 
-    // Método para token
-    static forToken(user) {
+     // Método para token
+     static forToken(user) {
         return {
-            id: user._id,
-            name: `${user.firstName} ${user.lastName}`,
+            id: user._id || user.id,
+            name: `${user.firstName} ${user.lastName}`, 
             email: user.email,
             role: user.role
         };
@@ -21,7 +21,7 @@ export default class UserDto {
     static forUser(user) {
         return {
             id: user._id || user.id,
-            name: `${user.firstName} ${user.lastName}`,
+            name: `${user.firstName} ${user.lastName }`,
             email: user.email,
             role: user.role
         };

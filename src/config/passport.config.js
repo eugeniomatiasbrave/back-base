@@ -60,7 +60,7 @@ const initializePassportConfig = () =>{
         jwtFromRequest:ExtractJwt.fromExtractors([cookieExtractor]),
         secretOrKey: SECRET
     },async(payload,done)=>{
-        console.log(payload);
+        console.log("Estrategia- Current",payload);
         return done(null,payload);
     }))
 
