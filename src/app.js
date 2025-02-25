@@ -1,3 +1,5 @@
+import './listeners.js'; // Importa el archivo listeners.js para que se ejecuten los listeners
+
 import express from 'express'; // importo express desde la carpeta node_modules
 import ProductsRouter from './router/ProductsRouter.js';
 import UsersRouter from './router/UsersRouter.js'; // importo UsersRouter desde la carpeta router/users.router.js
