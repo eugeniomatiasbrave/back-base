@@ -1,24 +1,48 @@
-
 import { UserModel } from "./models/user.model.js";
 
 export default class UserDao {
     async get() {
-        return await UserModel.findAll();
+        try {
+            return await UserModel.findAll();
+        } catch (error) {
+            console.error('Error in get:', error);
+            throw new Error('Failed to get users');
+        }
     }
 
     async getOne(params) {
-        return await UserModel.findOne({ where: params });
+        try {
+            return await UserModel.findOne({ where: params });
+        } catch (error) {
+            console.error('Error in getOne:', error);
+            throw new Error('Failed to get user');
+        }
     }
 
     async create(user) {
-        return await UserModel.create(user);
+        try {
+            return await UserModel.create(user);
+        } catch (error) {
+            console.error('Error in create:', error);
+            throw new Error('Failed to create user');
+        }
     }
 
     async update(id, user) {
-        return await UserModel.update(user, { where: { id } });
+        try {
+            return await UserModel.update(user, { where: { id } });
+        } catch (error) {
+            console.error('Error in update:', error);
+            throw new Error('Failed to update user');
+        }
     }
 
     async delete(id) {
-        return await UserModel.destroy({ where: { id } });
+        try {
+            return await UserModel.destroy({ where: { id } });
+        } catch (error) {
+            console.error('Error in delete:', error);
+            throw new Error('Failed to delete user');
+        }
     }
 }

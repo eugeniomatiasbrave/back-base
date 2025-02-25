@@ -10,7 +10,7 @@ process.on('exit', (code) => {
 
 // Manejo las excepciones no capturadas
 process.on('uncaughtException', (err) => {
-    console.error('Uncaught Exception:', err);
+    console.error('Uncaught Exception:', err.message);
     db.close(); // Cierra la conexión de MySQL
     mongoose.connection.close(); // Cierra la conexión de MongoDB
     process.exit(1); // Salir del proceso después de manejar el error

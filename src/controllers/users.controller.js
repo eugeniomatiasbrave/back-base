@@ -63,7 +63,6 @@ const createUser = async (req, res) => {
 } // add createUser to the export object
 
 const updateUser = async (req, res) => {};
-
 const deleteUser = async (req, res) => {};
 
 export default {

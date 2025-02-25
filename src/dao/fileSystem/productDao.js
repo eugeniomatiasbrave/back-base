@@ -3,9 +3,7 @@ import __dirname from '../../utils.js';
 
 const PATH = `${__dirname}/dao/fileSystem/products.json`;
 
-
 class ProductDao {
-
       constructor() {
         this.init();
    }
@@ -26,40 +24,64 @@ class ProductDao {
        }; // fin del init
 
     async get() {
-        const data = await fs.promises.readFile(PATH, 'utf-8');
-        return JSON.parse(data);
+        try {
+            const data = await fs.promises.readFile(PATH, 'utf-8');
+            return JSON.parse(data);
+        } catch (error) {
+            console.error('Error al leer los productos:', error);
+            throw new Error('Failed to get products');
+        }
     }
 
     async getById(id) {
-        const products = await this.get();
-        return products.find(product => product.id === id);
+        try {
+            const products = await this.get();
+            return products.find(product => product.id === id);
+        } catch (error) {
+            console.error('Error al obtener el producto por ID:', error);
+            throw new Error('Failed to get product by ID');
+        }
     }
 
     async create(product) {
-        const products = await this.get();
-        products.push(product);
-        await fs.promises.writeFile(PATH, JSON.stringify(products, null, 2));
-        return product;
+        try {
+            const products = await this.get();
+            products.push(product);
+            await fs.promises.writeFile(PATH, JSON.stringify(products, null, 2));
+            return product;
+        } catch (error) {
+            console.error('Error al crear el producto:', error);
+            throw new Error('Failed to create product');
+        }
     }
 
     async update(id, updatedProduct) {
-        const products = await this.get();
-        const index = products.findIndex(product => product.id === id);
-        if (index === -1) {
-            throw new Error('Product not found');
+        try {
+            const products = await this.get();
+            const index = products.findIndex(product => product.id === id);
+            if (index === -1) {
+                throw new Error('Product not found');
+            }
+            products[index] = { ...products[index], ...updatedProduct };
+            await fs.promises.writeFile(PATH, JSON.stringify(products, null, 2));
+            return products[index];
+        } catch (error) {
+            console.error('Error al actualizar el producto:', error);
+            throw new Error('Failed to update product');
         }
-        products[index] = { ...products[index], ...updatedProduct };
-        fs.writeFile(filePath, JSON.stringify(products, null, 2));
-        return products[index];
     }
 
     async delete(id) {
-        const products = await this.get();
-        const filteredProducts = products.filter(product => product.id !== id);
-        fs.writeFile(filePath, JSON.stringify(filteredProducts, null, 2));
-        return { id };
+        try {
+            const products = await this.get();
+            const filteredProducts = products.filter(product => product.id !== id);
+            await fs.promises.writeFile(PATH, JSON.stringify(filteredProducts, null, 2));
+            return { id };
+        } catch (error) {
+            console.error('Error al eliminar el producto:', error);
+            throw new Error('Failed to delete product');
+        }
     }
 }
-
 
 export default ProductDao;

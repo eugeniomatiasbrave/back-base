@@ -63,7 +63,7 @@ PASO A PASO, SIN SALTEAR TEMAS Y DELANTARME
 12. Factory.........................................ok
 13. Persistencia multiple...........................ok
 14. Manejo de multiples variables de entorno........ok
-15. Process.on() cierres y captura de excep.........ok
+15. listeners de Process.on().......................ok
 
 ORDEN PARA NO MAREARME para cada servicio
 
