@@ -62,7 +62,7 @@ PASO A PASO, SIN SALTEAR TEMAS Y DELANTARME
 11. DTO.............................................ok   a mejorar cuando vea seguridad
 12. Factory.........................................ok
 13. Persistencia multiple...........................ok
-14. Manejo de variables de entorno..................ok
+14. Manejo de multiples variables de entorno........ok
 
 ORDEN PARA NO MAREARME para cada servicio
 
