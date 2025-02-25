@@ -49,7 +49,7 @@ REPASO:
 
 PASO A PASO, SIN SALTEAR TEMAS Y DELANTARME
 
-1. Primero trabajar con .env .......................ok
+1. Primero trabajar con .env (entornos).............ok
 2. DAO..............................................ok
 3. Models...........................................ok
 4. Repositories.....................................ok
@@ -62,7 +62,7 @@ PASO A PASO, SIN SALTEAR TEMAS Y DELANTARME
 11. DTO.............................................ok   a mejorar cuando vea seguridad
 12. Factory.........................................ok
 13. Persistencia multiple...........................ok
-14. Trabajar sin .ENV, con launch.json..............
+14. Manejo de variables de entorno..................ok
 
 ORDEN PARA NO MAREARME para cada servicio
 
