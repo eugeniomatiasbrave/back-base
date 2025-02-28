@@ -39,6 +39,7 @@ const initializePassportConfig = () =>{
     passport.use('login', new LocalStrategy({usernameField:'email'},async(email,password,done)=>{
             console.log(`Attempting to find user with email: ${email}`);
             const user = await usersServices.getUserBy({email});
+            
             console.log(`User found: ${user}`);
             if (!user) {
                 console.log("User not found");
