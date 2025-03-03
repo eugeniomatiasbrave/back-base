@@ -1,4 +1,4 @@
-import db from './dao/mySql/connection.js'; // Importa la conexión de MySQL
+import db from '../dao/mySql/connection.js'; // Importa la conexión de MySQL
 import mongoose from 'mongoose'; // Importa mongoose para la conexión de MongoDB
 
 // Manejo el evento de salida del proceso

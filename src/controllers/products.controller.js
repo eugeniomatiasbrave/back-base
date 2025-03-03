@@ -1,30 +1,31 @@
 import { productsService } from "../services/indexRepositories.js"; // import the productsService from the indexRepositories.js file
+import logger from '../config/log4js.config.js'; // import the logger from the log4js.config.js file
+import { BadRequestError } from '../utils/customError.js'; // import the custom errors
+import HttpRes from '../utils/httpResponse.js'; // Importa la clase de respuesta HTTP
 
-const getProducts = async (req, res) => {
+const getProducts = async (req, res, next) => {
     try {
         const products = await productsService.getProducts();
-        res.sendSuccess(products);
+        HttpRes.Success(res, products); // Use the Success method from the HttpRes class to send the 
     } catch (error) {
-        console.error('Error in getProducts:', error);
-        res.sendServerError('Failed to get products');
+        logger.error('Error retrieving products:', error);
+        next(error); // Pasa el error al manejador de errores
     }
 };
 
-const createProduct = async (req, res) => {
+const createProduct = async (req, res, next) => {
     try {
-        const { name, description, price } = req.body; // get the product from the request body.
-        
-        const product = {
-            name,
-            description,
-            price
-        }; // create a product object with the name, description and price
-        
-        const newProduct = await productsService.createProduct(product); // create the product
-        res.sendSuccess(newProduct); // send the new product as a response
+        const { name, description, price } = req.body;
+        if (!name || !description || !price) {
+            logger.warn('Incomplete values for product creation');
+            throw new BadRequestError('Incomplete values for product creation'); // Pasa el error al manejador de errores
+        }
+        const product = { name, description, price };
+        const newProduct = await productsService.createProduct(product);
+        HttpRes.Created(res, newProduct); // Use the Created method from the HttpRes class to send the
     } catch (error) {
-        console.error('Error in createProduct:', error);
-        res.sendServerError('Failed to create product');
+        logger.error('Error creating product:', error);
+        next(error); // Pasa el error al manejador de errores
     }
 };
 

@@ -14,7 +14,8 @@ export default {
     app:{
         PORT: process.env.PORT||8080,
         ADMIN_PWD: process.env.ADMIN_PASSWORD,
-        PERSISTENCE: process.env.PERSISTENCE || 'MYSQL'
+        PERSISTENCE: process.env.PERSISTENCE || 'MYSQL',
+        MODE: process.env.MODE
     },
     mongo:{
         URL:process.env.MONGO_URL,

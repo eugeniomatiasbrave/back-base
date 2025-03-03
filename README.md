@@ -4,44 +4,45 @@
 
 - Modelo Vista Controlador MVC
 
+.env.dev
+.env.prod
+.env.stg
+.gitignore
+package copy.json
+package.json
+README.md
+logs/
+   app.log
 src/
-  ├── config/
-  │   ├── config.js
-  │   └── passport.config.js
-  ├── controllers/
-  │   ├── views.controller.js
-  │   └── sessions.controller.js
-  ├── dao/
-  │   ├── mongo/
-  │   │   ├── models/
-  │   │   │   ├── User.model.js
-  │   │   │   └── Product.model.js
-  │   │   ├── UsersDao.js
-  │   │   └── ProductsDao.js
-  │   ├── fs/
-  │   │   └── UsersDao.js
-  │   ├── mysql/
-  │   │   └── UsersDao.js
-  │   └── factory.js
-  ├── dto/
-  │   ├── user.dto.js
-  │   └── product.dto.js
-  ├── middlewares/
-  │   ├── auth.middleware.js
-  │   └── error.middleware.js
-  ├── routes/
-  │   ├── views.router.js
-  │   ├── sessions.router.js
-  │   └── BaseRouter.js
-  ├── services/
-  │   ├── repositories/
-  │   │   ├── UsersRepository.js
-  │   │   └── ProductsRepository.js
-  │   ├── indexRepositories.js
-  │   └── AuthService.js
-  ├── utils/
-  │   └── utils.js
-  └── app.js
+    config/
+        config.env.js
+        passport.config.js
+        log4js.config.js
+    controllers/
+        products.controller.js
+        sessions.controller.js
+        users.controller.js
+    dao/
+        factory.js
+        fileSystem/
+        mongo/
+        mySql/
+    dto/
+        userDto.js
+    listeners.js
+    middlewares/
+        errorHandler.js
+        passportCall.js
+        policies.js
+    router/
+        BaseRouter.js
+        ProductsRouter.js
+    services/
+    utils/
+        utils.js
+        customResponse.js
+        customErrors.js
+    app.js
 
 ## Lista
 
@@ -64,11 +65,12 @@ PASO A PASO, SIN SALTEAR TEMAS Y DELANTARME
 13. Persistencia multiple...........................ok
 14. Manejo de multiples variables de entorno........ok
 15. listeners de Process.on().......................ok
-16. Optimizacion: Manejo de errores y rtas..........
-17. Performance: Pruebas de carga...................
-18. Loggeo: logger..................................
+16. Optimizacion: Manejo de errores y rtas..........ok
+17. Loggeo: logger..................................ok
+18. Performance: Pruebas de carga...................
 19. Testing.........................................
 20. Seguridad.......................................
+21. Schema validator??? regex.......................
 
 ORDEN PARA NO MAREARME para cada servicio
 

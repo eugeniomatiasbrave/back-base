@@ -1,48 +1,61 @@
 import { usersServices } from "../services/indexRepositories.js"; // Importa el servicio de usuarios
+import logger from '../config/log4js.config.js'; // Importa el logger
+import { NotFoundError, BadRequestError, ValidatorError } from '../utils/customError.js'; // Importa los errores personalizados
+import HttpRes from '../utils/httpResponse.js'; // Importa la clase de respuesta HTTP
 
-const getUsers = async (req, res) => {
+const getUsers = async (req, res, next) => {
     try {
         const users = await usersServices.getUsers();
-        res.sendSuccess(users);
+        HttpRes.Success(res, users);
     } catch (error) {
-        res.sendServerError('Internal server error');
+        logger.error('Error retrieving users:', error);
+        next(error); // Pasa el error al manejador de errores
     }
 };
 
-const getUserById = async (req, res) => {
+const getUserById = async (req, res, next) => {
     try {
         const user = await usersServices.getUserBy({ _id: req.params.id });
         if (!user) {
-            return res.sendNotFound('User not found');
+            logger.warn(`User with id ${req.params.id} not found`);
+            throw new NotFoundError('User not found'); // Pasa el error al manejador de errores
         }
-        res.sendSuccess(user);
+        HttpRes.Success(res, user);
     } catch (error) {
-        res.sendServerError('Internal server error');
+        logger.error('Error retrieving user by id:', error);
+        next(error); // Pasa el error al manejador de errores
     }
 };
 
-const getUserByEmail = async (req, res) => {
+const getUserByEmail = async (req, res, next) => {
     try {
         const user = await usersServices.getUserBy({ email: req.params.email });
         if (!user) {
-            return res.sendNotFound('User not found');
+            logger.warn(`User with email ${req.params.email} not found`);
+            throw new NotFoundError('User not found'); //
         }
-        res.sendSuccess(user);
+        logger.info(`User with email ${req.params.email} retrieved successfully`);
+        HttpRes.Success(res, user);
     } catch (error) {
-        res.sendServerError('Internal server error');
+        logger.error('Error retrieving user by email:', error);
+        next(error); // Pasa el error al manejador de errores
     }
-}
+};
 
-const createUser = async (req, res) => {
+const createUser = async (req, res, next) => {
     try {
         const { firstName, lastName, email, birthDate, password } = req.body;
         if (!firstName || !lastName || !email || !password) {
-            return res.sendBadRequest('Incomplete values');
+            logger.warn('Incomplete values for user creation');
+            throw new ValidatorError('Incomplete values for user creation'); 
         }
         const user = await usersServices.getUserBy({ email });
-        if (user) {
-            return res.sendBadRequest('User already exists');
+    
+        if (user) { // verifico si el usuario ya existe
+            logger.warn(`User with email ${email} already exists`);
+            throw new BadRequestError('User already exists'); // Pasa el error al manejador de errores
         }
+
         let parsedDate;
         if (birthDate) {
             parsedDate = new Date(birthDate).toISOString();
@@ -55,11 +68,12 @@ const createUser = async (req, res) => {
             password
         };
         const result = await usersServices.createUser(newUser);
-        res.sendSuccess(result);
+        HttpRes.Created(res, result);
     } catch (error) {
-        res.sendServerError('Internal server error');
+        logger.error('Error creating user:', error);
+        next(error); // Pasa el error al manejador de errores
     }
-}
+};
 
 const updateUser = async (req, res) => {};
 const deleteUser = async (req, res) => {};

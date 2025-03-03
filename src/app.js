@@ -1,5 +1,4 @@
-import './listeners.js'; // Importa el archivo listeners.js para que se ejecuten los listeners
-
+import './utils/listeners.js'; // Importa el archivo listeners.js para que se ejecuten los listeners
 import express from 'express'; // importo express desde la carpeta node_modules
 import ProductsRouter from './router/ProductsRouter.js';
 import UsersRouter from './router/UsersRouter.js'; // importo UsersRouter desde la carpeta router/users.router.js
@@ -9,6 +8,7 @@ import initializePassportConfig from './config/passport.config.js'; // importo i
 import passport from 'passport'; // importo passport desde la carpeta node_modules.
 import cookieParser from 'cookie-parser'; // importo cookieParser desde la carpeta node_modules.
 import cors from 'cors'; // Importa el paquete cors desde la carpeta node_modules.
+import { handlerError } from './middlewares/errorHandler.js';
 
 const app = express(); // coloco al metodo express en una constante llamada app.
 
@@ -29,6 +29,9 @@ const server = app.listen(PORT, ()=> { // creo una constante llamada server que 
 initializePassportConfig(); // inicializo el passport.
 app.use(passport.initialize()); // uso el metodo initialize de passport.
 
+
 app.use('/api/products', ProductsRouter); // ruta api/products, que usa el ProductsRouter de la carpeta router/products.router.js
 app.use('/api/users', UsersRouter); // ruta api/users, que usa el UsersRouter de la carpeta router/users.router.js
 app.use('/api/sessions', SessionsRouter); // ruta api/sessions, que usa el SessionRouter de la carpeta router/sessions.router.js
+
+app.use(handlerError); // uso el metodo handlerError de la carpeta middlewares/errorHandler.js

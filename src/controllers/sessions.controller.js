@@ -1,62 +1,65 @@
 import jwt from 'jsonwebtoken';
 import config from '../config/config.env.js';
 import userDto from '../dto/userDto.js';
+import logger from '../config/log4js.config.js'
+import HttpRes from '../utils/httpResponse.js';
+import { UnauthorizedError } from '../utils/customError.js';
 
 const SECRET = config.auth.jwt.SECRET;
 
-const register = (req, res) => {
+const register = (req, res, next) => {
     try {
-        res.sendSuccess("Registered");
+        HttpRes.Success("Registered");
     } catch (error) {
-        console.error('Error in register:', error);
-        res.sendServerError('Registration failed');
+        logger.error('Error registering user:', error);
+       next(error); // Pasa el error al manejador de
     }
 };
 
-const login = async (req, res) => {
+const login = async (req, res, next) => {
     try {
         const user = req.user;
         const TokenResponseDto = userDto.forToken(user); // Use userDto.js to format the user data for the token
         const token = jwt.sign(TokenResponseDto, SECRET, { expiresIn: '1h' });
-        console.log(token);
-        res.cookie('token', token).sendSuccess("Logged in");
+        res.cookie('token', token);
+        HttpRes.Success(res, "Logged in");
     } catch (error) {
-        console.error('Error in login:', error);
-        res.sendServerError('Login failed');
+        logger.error('Error logging in user:', error);
+        next(error);
     }
 };
 
-const adminAccess = async (req, res) => {
+const adminAccess = async (req, res, next) => {
     try {
         const admin = req.user;
-        console.log('admin', admin);
-        res.json(admin);
+        HttpRes.Success(res, admin);;
     } catch (error) {
-        console.error('Error in adminAccess:', error);
-        res.sendServerError('Admin access failed');
+        logger.error('Error granting admin access:', error);
+        next(error);
     }
 };
 
-const logout = async (req, res) => {
+const logout = async (req, res, next) => {
     try {
         res.clearCookie('token');
-        res.sendSuccess("Logged out");
+        HttpRes.Success(res, "Logged out");
     } catch (error) {
-        console.error('Error in logout:', error);
-        res.sendServerError('Logout failed');
+        logger.error('Error logging out user:', error);
+        next(error); // Pasa el error al manejador de errores
     }
 };
 
-const current = async (req, res) => { // Add the current function, which will return the current user, if logged in, or an error message if not
+const current = async (req, res, next) => { // Add the current function, which will return the current user, if logged in, or an error message if not
     try {
         const user = req.user;
         if (!user) {
-            return res.sendUnauthorized("Unauthorized");
+            logger.warn('Unauthorized access attempt');
+            throw new UnauthorizedError('Unauthorized access'); // Pasa el error al manejador de errores 
         }
-        res.sendSuccess(user);
+        HttpRes.Success(res, user);
     } catch (error) {
-        console.error('Error in current:', error);
-        res.sendServerError('Failed to get current user');
+        logger.error('Error retrieving current user:', error);
+        next(error); // Pasa el error al manejador de errores
     }
 };
 

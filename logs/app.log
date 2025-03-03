@@ -1,0 +1,31 @@
+[2025-03-02T20:35:46.329] [INFO] default - User logged in successfully: P@example.com
+[2025-03-03T17:32:56.992] [INFO] default - Product created successfully: products {
+  dataValues: {
+    id: 5,
+    name: 'Indulina Detemir',
+    description: '100/ml x3 lap.',
+    price: 80000,
+    updatedAt: 2025-03-03T20:32:56.954Z,
+    createdAt: 2025-03-03T20:32:56.954Z
+  },
+  _previousDataValues: {
+    name: 'Indulina Detemir',
+    description: '100/ml x3 lap.',
+    price: 80000,
+    id: 5,
+    createdAt: 2025-03-03T20:32:56.954Z,
+    updatedAt: 2025-03-03T20:32:56.954Z
+  },
+  uniqno: 1,
+  _changed: Set(0) {},
+  _options: {
+    isNewRecord: true,
+    _schema: null,
+    _schemaDelimiter: '',
+    attributes: undefined,
+    include: undefined,
+    raw: undefined,
+    silent: undefined
+  },
+  isNewRecord: false
+}
