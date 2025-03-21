@@ -1,4 +1,4 @@
-import './utils/listeners.js'; // Importa el archivo listeners.js para que se ejecuten los listeners
+//import './utils/listeners.js'; // Importa el archivo listeners.js para que se ejecuten los listeners
 import express from 'express'; // importo express desde la carpeta node_modules
 import ProductsRouter from './router/ProductsRouter.js';
 import UsersRouter from './router/UsersRouter.js'; // importo UsersRouter desde la carpeta router/users.router.js
@@ -22,7 +22,7 @@ app.use(cors(corsOptions)); // Usa el middleware cors con opciones personalizada
 
 const PORT = config.app.PORT; // creo una constante llamada PORT qur tiene el valor de process.env.PORT o 8080.
 
-const server = app.listen(PORT, ()=> { // creo una constante llamada server que escucha en el puerto 8080
+app.listen(PORT, ()=> { // creo una constante llamada server que escucha en el puerto 8080
       console.log(`server is running on port ${PORT}`);
 });
 

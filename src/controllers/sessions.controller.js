@@ -9,7 +9,7 @@ const SECRET = config.auth.jwt.SECRET;
 
 const register = (req, res, next) => {
     try {
-        HttpRes.Success("Registered");
+        HttpRes.Success(res,"Registered");
     } catch (error) {
         logger.error('Error registering user:', error);
        next(error); // Pasa el error al manejador de

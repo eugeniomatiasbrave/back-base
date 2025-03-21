@@ -12,7 +12,7 @@ config({
 
 export default {
     app:{
-        PORT: process.env.PORT||8080,
+        PORT: process.env.PORT ||8082,
         ADMIN_PWD: process.env.ADMIN_PASSWORD,
         PERSISTENCE: process.env.PERSISTENCE || 'MYSQL',
         MODE: process.env.MODE

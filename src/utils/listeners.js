@@ -1,3 +1,4 @@
+/*
 import db from '../dao/mySql/connection.js'; // Importa la conexión de MySQL
 import mongoose from 'mongoose'; // Importa mongoose para la conexión de MongoDB
 
@@ -24,3 +25,4 @@ process.on('SIGINT', () => {
     mongoose.connection.close(); // Cierra la conexión de MongoDB
     process.exit(0); // Salir del proceso
 });
+*/

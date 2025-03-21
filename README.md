@@ -8,9 +8,15 @@
 .env.prod
 .env.stg
 .gitignore
+.dockerignore
 package copy.json
 package.json
 README.md
+performance/
+   products-get.yml
+   products-get-report.json
+Docker/
+   Dockerfile
 logs/
    app.log
 src/
@@ -48,36 +54,30 @@ src/
 
 REPASO:
 
-PASO A PASO, SIN SALTEAR TEMAS Y DELANTARME
+PASO A PASO (Primero trabajar con .env (entornos)) luego sin .env creando debug launch.json
 
-1. Primero trabajar con .env (entornos).............ok
-2. DAO..............................................ok
+1. Crear servidor, DB, Conectar, crear rutas y
+   controllers......................................ok
+2. DAOs.............................................ok
 3. Models...........................................ok
 4. Repositories.....................................ok
 5. Config...........................................ok
 6. Cookies + token + JWT............................ok
 7. PASSPORT.........................................ok
 8. Polices..........................................ok
-9. ROUTER AVANZADO BaseRouter.......................ok
+9. Router Avanzado BaseRouter.......................ok
 10. Conectar front cors.............................ok
-11. DTO.............................................ok   a mejorar cuando vea seguridad
+11. DTOs............................................ok   a mejorar cuando vea seguridad
 12. Factory.........................................ok
 13. Persistencia multiple...........................ok
 14. Manejo de multiples variables de entorno........ok
 15. listeners de Process.on().......................ok
 16. Optimizacion: Manejo de errores y rtas..........ok
 17. Loggeo: logger..................................ok
-18. Performance: Pruebas de carga...................
-19. Testing.........................................
-20. Seguridad.......................................
-21. Schema validator??? regex.......................
-
-ORDEN PARA NO MAREARME para cada servicio
-
-1. model schema
-2. dao
-3. repositories
-4. instanciar repostories en indexRepositories
-5. logica de controllers
-6. router()
-7. app.use()
+18. Performance: Pruebas de carga...................ok
+19. Seguridad.......................................
+20. Schema validator??? regex.......................
+21. Testing.........................................
+22. Documentacion Swagger...........................
+23. Docker, multiples entornos......................
+24. DockerHubs......................................

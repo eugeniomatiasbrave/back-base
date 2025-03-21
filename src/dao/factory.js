@@ -8,6 +8,7 @@ import ProductDaoMongo from './mongo/productDao.js';
 import UserDaoMySql from './mySql/userDao.js';
 import ProductDaoMySql from './mySql/productDao.js';
 
+
 const URL = config.mongo.URL;
 
 export default class PersistenceFactory {

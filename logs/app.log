@@ -29,3 +29,25 @@
   },
   isNewRecord: false
 }
+[2025-03-21T15:41:36.159] [ERROR] default - Error registering user: TypeError: res.status is not a function
+    at HttpRes.Success (file:///C:/Users/eugen/OneDrive/Desktop/app-model-base/back-base/src/utils/httpResponse.js:18:14)
+    at SessionRouter.register (file:///C:/Users/eugen/OneDrive/Desktop/app-model-base/back-base/src/controllers/sessions.controller.js:12:17)
+    at file:///C:/Users/eugen/OneDrive/Desktop/app-model-base/back-base/src/router/BaseRouter.js:43:20
+    at Layer.handle [as handle_request] (C:\Users\eugen\OneDrive\Desktop\app-model-base\back-base\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\eugen\OneDrive\Desktop\app-model-base\back-base\node_modules\express\lib\router\route.js:149:13)
+    at file:///C:/Users/eugen/OneDrive/Desktop/app-model-base/back-base/src/middlewares/passportCall.js:11:13
+    at strategy.success (C:\Users\eugen\OneDrive\Desktop\app-model-base\back-base\node_modules\passport\lib\middleware\authenticate.js:222:18)
+    at verified (C:\Users\eugen\OneDrive\Desktop\app-model-base\back-base\node_modules\passport-local\lib\strategy.js:83:10)
+    at Strategy._verify (file:///C:/Users/eugen/OneDrive/Desktop/app-model-base/back-base/src/config/passport.config.js:36:20)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[2025-03-21T15:42:27.988] [ERROR] default - Error registering user: TypeError: res.status is not a function
+    at HttpRes.Success (file:///C:/Users/eugen/OneDrive/Desktop/app-model-base/back-base/src/utils/httpResponse.js:18:14)
+    at SessionRouter.register (file:///C:/Users/eugen/OneDrive/Desktop/app-model-base/back-base/src/controllers/sessions.controller.js:12:17)
+    at file:///C:/Users/eugen/OneDrive/Desktop/app-model-base/back-base/src/router/BaseRouter.js:43:20
+    at Layer.handle [as handle_request] (C:\Users\eugen\OneDrive\Desktop\app-model-base\back-base\node_modules\express\lib\router\layer.js:95:5)
+    at next (C:\Users\eugen\OneDrive\Desktop\app-model-base\back-base\node_modules\express\lib\router\route.js:149:13)
+    at file:///C:/Users/eugen/OneDrive/Desktop/app-model-base/back-base/src/middlewares/passportCall.js:11:13
+    at allFailed (C:\Users\eugen\OneDrive\Desktop\app-model-base\back-base\node_modules\passport\lib\middleware\authenticate.js:110:18)
+    at attempt (C:\Users\eugen\OneDrive\Desktop\app-model-base\back-base\node_modules\passport\lib\middleware\authenticate.js:183:28)
+    at strategy.fail (C:\Users\eugen\OneDrive\Desktop\app-model-base\back-base\node_modules\passport\lib\middleware\authenticate.js:314:9)
+    at verified (C:\Users\eugen\OneDrive\Desktop\app-model-base\back-base\node_modules\passport-local\lib\strategy.js:82:30)

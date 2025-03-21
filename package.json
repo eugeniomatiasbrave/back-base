@@ -4,10 +4,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/app.js -m dev",
-    "stg": "nodemon src/app.js -m stg",
     "prod": "node src/app.js -m prod",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/app.js -m dev",
+    "stg": "nodemon src/app.js -m stg"
   },
   "keywords": [],
   "author": "",
@@ -31,6 +30,7 @@
     "sequelize": "^6.32.1"
   },
   "devDependencies": {
-    "artillery": "^2.0.21"
+    "artillery": "^2.0.21",
+    "nodemon": "^3.1.9"
   }
 }

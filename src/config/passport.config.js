@@ -64,7 +64,6 @@ const initializePassportConfig = () =>{
         console.log("Estrategia- Current",payload);
         return done(null,payload);
     }))
-
     // estrategia para headers, esta estrategia se encarga de extraer el token del header de la peticion y 
     // verificarlo con la clave secreta
 
@@ -80,8 +79,7 @@ const initializePassportConfig = () =>{
     }));
 
     // La forma en que se extrae el token es algo a coordinar en el equipo de desarrollo, 
-    // puede venir por headers, cookies, query params, etc.
-    
+    // puede venir por headers, cookies, query params, etc.  
 }
 
 function cookieExtractor(req) {
@@ -90,6 +88,5 @@ function cookieExtractor(req) {
     }
     return null;
 }
-
 export default initializePassportConfig;
 
