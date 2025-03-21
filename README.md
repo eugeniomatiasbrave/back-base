@@ -57,29 +57,40 @@ REPASO:
 PASO A PASO (Primero trabajar con .env (entornos)) luego sin .env creando debug launch.json
 
 1. Crear servidor, DB, Conectar, crear rutas y
-   controllers......................................ok
-2. DAOs.............................................ok
-3. Models...........................................ok
-4. Repositories.....................................ok
-5. Config...........................................ok
-6. Cookies + token + JWT............................ok
-7. PASSPORT.........................................ok
-8. Polices..........................................ok
-9. Router Avanzado BaseRouter.......................ok
-10. Conectar front cors.............................ok
-11. DTOs............................................ok   a mejorar cuando vea seguridad
-12. Factory.........................................ok
-13. Persistencia multiple...........................ok
-14. Manejo de multiples variables de entorno........ok
-15. listeners de Process.on().......................ok
-16. Optimizacion: Manejo de errores y rtas..........ok
-17. Loggeo: logger..................................ok
-18. Performance: Pruebas de carga...................ok
-19. Seguridad.......................................
-20. Schema validator, regex.........................
-21. Testing.........................................
-22. Documentacion Swagger...........................
-23. Docker, multiples entornos......................
-24. DockerHubs......................................
-25. GitHub ramas dev, stg y prod....................
-26. Deploy..........................................
+   controllers...........................................ok
+2. DAOs..................................................ok
+3. Models................................................ok
+4. Repositories..........................................ok
+5. Config................................................ok
+6. Cookies + token + JWT.................................ok
+7. PASSPORT..............................................ok
+8. Polices...............................................ok
+9. Router Avanzado BaseRouter............................ok
+10. Conectar front cors..................................ok
+11. DTOs.................................................ok
+12. Factory..............................................ok
+13. Persistencia multiple................................ok
+14. Manejo de multiples variables de entorno.............ok
+15. listeners de Process.on()............................ok
+16. Optimizacion: Manejo de errores y rtas...............ok
+17. Loggeo: logger.......................................ok
+18. Performance: Pruebas de carga........................ok
+19. Seguridad............................................
+    - Contraseñas: Hashing (bcrypt)......................ok
+    - Variables de Entorno: .env esté en .gitignore......ok
+    - Autenticación y Autorización.......................ok
+    - Configuración de CORS..............................ok
+    - Actualización de Dependencias......................ok
+    - Manejo de Err: No reveles detalles al cliente......ok
+    - Seguridad de Cookies: banderas HttpOnly y Secure...ok
+    - Validación de Entradas del usuario.................
+    - Protección contra CSRF?............................avanzado
+    - Seguridad en la Base de Datos:.....................avanzado
+    - Configuración de Seguridad en Producción...........avanzado
+20. Schema validator, regex..............................
+21. Testing..............................................
+22. Documentacion Swagger................................
+23. Docker, multiples entornos...........................
+24. DockerHubs...........................................
+25. GitHub ramas dev, stg y prod.........................
+26. Deploy...............................................
