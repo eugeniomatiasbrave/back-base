@@ -6,7 +6,8 @@
   "scripts": {
     "prod": "node src/app.js -m prod",
     "dev": "nodemon src/app.js -m dev",
-    "stg": "nodemon src/app.js -m stg"
+    "stg": "nodemon src/app.js -m stg",
+    "test:chai": "mocha"
   },
   "keywords": [],
   "author": "",
@@ -32,7 +33,12 @@
     "sequelize": "^6.32.1"
   },
   "devDependencies": {
+    "@faker-js/faker": "^9.6.0",
     "artillery": "^2.0.21",
-    "nodemon": "^3.1.9"
+    "chai": "^5.2.0",
+    "mocha": "^11.1.0",
+    "nodemon": "^3.1.9",
+    "sinon": "^20.0.0",
+    "supertest": "^7.1.0"
   }
 }
